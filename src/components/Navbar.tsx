@@ -62,7 +62,7 @@ const Navbar = ({ element }: NavbarProps) => {
                   <Link to="/">Home</Link>
                 </SheetClose>
                 <SheetClose asChild>
-                  <Link to="/ ">Account</Link>
+                  <Link to="/account">Account</Link>
                 </SheetClose>
                 <SheetClose asChild>
                   <button onClick={handleLogout}>Logout</button>
