@@ -85,29 +85,19 @@ const UserProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const refresh = async () => {
-    try {
-      const response = await axios('/api/users/refresh', {
-        method: 'GET',
-        withCredentials: true,
-      });
+    const response = await axios('/api/users/refresh', {
+      method: 'GET',
+      withCredentials: true,
+    });
 
-      const newAccessToken = response.headers['authorization'].split(' ')[1];
-      const decoded = jwtDecode(newAccessToken) as UserType;
+    const newAccessToken = response.headers['authorization'].split(' ')[1];
+    const decoded = jwtDecode(newAccessToken) as UserType;
 
-      return {
-        username: decoded.username,
-        name: decoded.name,
-        accessToken: newAccessToken,
-      };
-    } catch (error) {
-      console.log(error);
-      // if (error instanceof AxiosError) {
-      //   toast({
-      //     title: error.response?.data?.errors,
-      //     variant: 'destructive',
-      //   });
-      // }
-    }
+    return {
+      username: decoded.username,
+      name: decoded.name,
+      accessToken: newAccessToken,
+    };
   };
 
   return (

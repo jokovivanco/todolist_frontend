@@ -40,7 +40,9 @@ function App() {
         <Route path="register" element={<Register />} />
 
         {/* protected routes */}
-        <Route element={<RequireAuth element={`Hi, ${user?.name}`} />}>
+        <Route
+          element={<RequireAuth user={user} element={`Hi, ${user?.name}`} />}
+        >
           <Route path="/" element={<Dashboard />} />
           <Route path="/account" element={<Account />} />
         </Route>
@@ -48,6 +50,7 @@ function App() {
         <Route
           element={
             <RequireAuth
+              user={user}
               element={
                 <Link to="/" className="flex items-center gap-2">
                   <MoveLeft />
